@@ -73,8 +73,39 @@ const scratchData = [
     { id: 22, foo: 'bar' },
     { id: 28, foo: 'bizz' },
     { id: 19, foo: 'bazz' },
-  ];
-  
-  function findById(items, idNum) {
+];
+
+function findById(items, idNum) {
     return items.find(item => idNum === item.id)
-  }
+}
+
+// validating keys
+const objectA = {
+    id: 2,
+    name: 'Jane Doe',
+    age: 34,
+    city: 'Chicago',
+};
+
+// running the function with `objectB` and `expectedKeys`
+// should return `false`
+const objectB = {
+    id: 3,
+    age: 33,
+    city: 'Peoria',
+};
+
+const expectedKeys = ['id', 'name', 'age', 'city'];
+
+function validateKeys(object, expectedKeys) {
+    if (Object.keys(object).length !== expectedKeys.length) {
+        return false;
+    }
+    for (let i = 0; i < expectedKeys.length; i++) {
+        if (!Object.keys(object).find(key => {
+            return key === expectedKeys[i];
+        }))
+            return false;
+    }
+    return true;
+}
