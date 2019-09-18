@@ -241,3 +241,46 @@ function decode(word) {
     let position = cypherObj[firstLetter];
     return word[position - 1];
 }
+
+//factory functions with LOTR
+function createCharacter(name, nickname, race, origin, attack, defense, weapon) {
+    return {
+      name,
+      nickname,
+      race,
+      origin,
+      attack,
+      defense,
+      describe: function(){
+        console.log(`${this.name} is a ${this.race} from ${this.origin}.`)},
+      evaluateFight: function(character){
+        if (character.defense > this.attack){return `Your oppenent takes 0 damage and you receive ${(character.attack)-(this.defense)} damage.`} 
+        else if (this.defense > character.attack) { return
+          `Your oppenent takes ${(this.attack)-(character.defense)} damage and you receive 0 damage.`} 
+        else {
+          `Your oppenent takes ${(this.attack)-(character.defense)} damage and you receive ${(character.attack)-(this.defense)} damage.`
+          }
+        },
+        weapon
+      }
+  }
+  
+  let characters = [
+    createCharacter('Gandalf the White', 'gandalf', 'Wizard', 'Middle Earth', 10, 6, 'wizard staff'),
+    createCharacter('Bilbo Baggins', 'bilbo', 'Hobbit', 'The Shire', 2, 1, 'the Ring'),
+    createCharacter('Frodo Baggins', 'frodo', 'Hobbit', 'The Shire', 3, 2, 'String and Barrow Blade'),
+    createCharacter('Aragorn son of Arathorn', 'aragorn', 'Man', 'Dunnedain', 6, 8, 'Anduril'),
+    createCharacter('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5, 'Bow and Arrow')
+    ]
+  
+    characters.push(createCharacter('Arwen', 'arwen', 'Half-Elf', 'Rivendell', 9, 7, 'Hadhafang'));
+  
+    characters.find(person => person.nickname === 'aragorn').describe();
+  
+    characters.filter(creature => creature.race === 'Hobbit');
+  
+    characters.filter(creature => creature.attack > 5);
+  
+    characters.map(obj => obj.describe = function(){console.log(`${obj.name} is a ${obj.race} from ${obj.origin} who uses a ${obj.weapon}.`)})
+    
+    console.log(characters[0].describe());
