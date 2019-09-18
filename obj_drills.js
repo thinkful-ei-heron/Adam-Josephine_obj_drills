@@ -144,4 +144,32 @@ const obj = {
   }
   
   console.log(obj.meals.find(meal => meal === obj.meals[3]));
+
+//arrays of objects
+let myArray = [
+    {
+      name: 'Kevin',
+      jobTitle: 'Accountant'
+    },
+    {
+      name: 'Creed',
+      jobTitle: 'Quality Assurance'
+    },
+    {
+      name: 'Kelly',
+      jobTitle: 'Customer Service'
+    },
+    {
+      name: 'Ryan',
+      jobTitle: 'Temp'
+    },
+    {
+      name: 'Jim',
+      jobTitle: 'Sales'
+    }
+  ]
   
+  myArray.map(function(obj) {
+    console.log(obj.name);
+    console.log(obj.jobTitle);
+  })
