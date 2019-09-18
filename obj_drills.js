@@ -46,3 +46,14 @@ function keyDeleter(obj) {
     delete obj.bar;
     return obj;
 }
+
+//make student report
+function makeStudentsReport(data) {
+    let newArr = [];
+    for (let i = 0; i < data.length; i++){
+      newArr.push(`${data[i].name}: ${data[i].grade}`);
+      
+    }
+    return(newArr);
+  }
+  
