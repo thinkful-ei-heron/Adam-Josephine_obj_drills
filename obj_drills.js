@@ -124,3 +124,16 @@ const loaf = {
     }
   
     console.log(loaf.hydration())
+
+//iterating over an object's properties
+const myObj = {
+    foo: 1,
+    bar: 2,
+    fum: 3,
+    quux: 4,
+    spam: 5
+  }
+  
+  for (let item in myObj) {
+    console.log(myObj[item]);
+  }
