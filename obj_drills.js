@@ -99,11 +99,12 @@ const expectedKeys = ['id', 'name', 'age', 'city'];
 
 function validateKeys(object, expectedKeys) {
     if (Object.keys(object).length !== expectedKeys.length) {
-        return false;}
+        return false;
+    }
 
     for (let i = 0; i < expectedKeys.length; i++) {
         let objKeys = Object.keys(object);
-        if (!objKeys.find(key => key === expectedKeys[i])){
+        if (!objKeys.find(key => key === expectedKeys[i])) {
             return false;
         }
     }
@@ -114,16 +115,16 @@ function validateKeys(object, expectedKeys) {
 const loaf = {
     flour: 300,
     water: 210
-  }
-  
-  console.log(loaf.flour)
-  console.log(loaf.water)
-  
-  loaf.hydration = function(){
-      return ((this.water)/(this.flour))*100
-    }
-  
-    console.log(loaf.hydration())
+}
+
+console.log(loaf.flour)
+console.log(loaf.water)
+
+loaf.hydration = function () {
+    return ((this.water) / (this.flour)) * 100
+}
+
+console.log(loaf.hydration())
 
 //iterating over an object's properties
 const myObj = {
@@ -132,87 +133,111 @@ const myObj = {
     fum: 3,
     quux: 4,
     spam: 5
-  }
-  
-  for (let item in myObj) {
+}
+
+for (let item in myObj) {
     console.log(myObj[item]);
-  }
+}
 
 //arrays in objects
 const obj = {
     meals: ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper']
-  }
-  
-  console.log(obj.meals.find(meal => meal === obj.meals[3]));
+}
+
+console.log(obj.meals.find(meal => meal === obj.meals[3]));
 
 //arrays of objects
 let myArray = [
     {
-      name: 'Kevin',
-      jobTitle: 'Accountant'
+        name: 'Kevin',
+        jobTitle: 'Accountant'
     },
     {
-      name: 'Creed',
-      jobTitle: 'Quality Assurance'
+        name: 'Creed',
+        jobTitle: 'Quality Assurance'
     },
     {
-      name: 'Kelly',
-      jobTitle: 'Customer Service'
+        name: 'Kelly',
+        jobTitle: 'Customer Service'
     },
     {
-      name: 'Ryan',
-      jobTitle: 'Temp'
+        name: 'Ryan',
+        jobTitle: 'Temp'
     },
     {
-      name: 'Jim',
-      jobTitle: 'Sales'
+        name: 'Jim',
+        jobTitle: 'Sales'
     }
-  ]
-  
-  myArray.map(function(obj) {
+]
+
+myArray.map(function (obj) {
     console.log(obj.name);
     console.log(obj.jobTitle);
-  })
+})
 
-  //Properties that aren't there
-  let myArray = [
+//Properties that aren't there
+let myArray = [
     {
-      name: 'Kevin',
-      jobTitle: 'Accountant'
+        name: 'Kevin',
+        jobTitle: 'Accountant'
     },
     {
-      name: 'Creed',
-      jobTitle: 'Quality Assurance'
+        name: 'Creed',
+        jobTitle: 'Quality Assurance'
     },
     {
-      name: 'Kelly',
-      jobTitle: 'Customer Service'
+        name: 'Kelly',
+        jobTitle: 'Customer Service'
     },
     {
-      name: 'Ryan',
-      jobTitle: 'Temp'
+        name: 'Ryan',
+        jobTitle: 'Temp'
     },
     {
-      name: 'Jim',
-      jobTitle: 'Sales'
+        name: 'Jim',
+        jobTitle: 'Sales'
     },
     {
-      name: 'David',
-      jobTitle: 'Owner'
+        name: 'David',
+        jobTitle: 'Owner'
     }
-  ]
-  
+]
 
-  myArray.map(function(obj) {
-    if (obj.jobTitle !== 'Owner'){
-    obj.boss = 'Michael'}
-  })
 
-  console.log(myArray)
-
-  myArray.map(function(obj){
-    if (obj.jobTitle === 'Owner'){
-    console.log(`${obj.jobTitle} ${obj.name} doesn\'t report to anybody.`)} else {
-      console.log(`${obj.jobTitle} ${obj.name} reports to ${obj.boss}.`)
+myArray.map(function (obj) {
+    if (obj.jobTitle !== 'Owner') {
+        obj.boss = 'Michael'
     }
-  })
+})
+
+console.log(myArray)
+
+myArray.map(function (obj) {
+    if (obj.jobTitle === 'Owner') {
+        console.log(`${obj.jobTitle} ${obj.name} doesn\'t report to anybody.`)
+    } else {
+        console.log(`${obj.jobTitle} ${obj.name} reports to ${obj.boss}.`)
+    }
+})
+
+//cracking the code
+const cypherObj = {
+    a: 2,
+    b: 3,
+    c: 4,
+    d: 5,
+}
+
+function decodeWords(str) {
+    let firstArray = str.split(" ");
+    let newArray = [];
+    for (let i = 0; i < firstArray.length; i++) {
+        newArray.push(decode(firstArray[i]));
+    }
+    return newArray.join(" ");
+}
+function decode(word) {
+    let firstLetter = word[0];
+    let position = cypherObj[firstLetter];
+    return word[position - 1];
+}
