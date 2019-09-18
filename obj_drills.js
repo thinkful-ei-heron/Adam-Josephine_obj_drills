@@ -99,13 +99,13 @@ const expectedKeys = ['id', 'name', 'age', 'city'];
 
 function validateKeys(object, expectedKeys) {
     if (Object.keys(object).length !== expectedKeys.length) {
-        return false;
-    }
+        return false;}
+
     for (let i = 0; i < expectedKeys.length; i++) {
-        if (!Object.keys(object).find(key => {
-            return key === expectedKeys[i];
-        }))
+        let objKeys = Object.keys(object);
+        if (!objKeys.find(key => key === expectedKeys[i])){
             return false;
+        }
     }
     return true;
 }
