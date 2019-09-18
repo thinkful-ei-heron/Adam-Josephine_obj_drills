@@ -137,3 +137,11 @@ const myObj = {
   for (let item in myObj) {
     console.log(myObj[item]);
   }
+
+//arrays in objects
+const obj = {
+    meals: ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper']
+  }
+  
+  console.log(obj.meals.find(meal => meal === obj.meals[3]));
+  
