@@ -173,3 +173,46 @@ let myArray = [
     console.log(obj.name);
     console.log(obj.jobTitle);
   })
+
+  //Properties that aren't there
+  let myArray = [
+    {
+      name: 'Kevin',
+      jobTitle: 'Accountant'
+    },
+    {
+      name: 'Creed',
+      jobTitle: 'Quality Assurance'
+    },
+    {
+      name: 'Kelly',
+      jobTitle: 'Customer Service'
+    },
+    {
+      name: 'Ryan',
+      jobTitle: 'Temp'
+    },
+    {
+      name: 'Jim',
+      jobTitle: 'Sales'
+    },
+    {
+      name: 'David',
+      jobTitle: 'Owner'
+    }
+  ]
+  
+
+  myArray.map(function(obj) {
+    if (obj.jobTitle !== 'Owner'){
+    obj.boss = 'Michael'}
+  })
+
+  console.log(myArray)
+
+  myArray.map(function(obj){
+    if (obj.jobTitle === 'Owner'){
+    console.log(`${obj.jobTitle} ${obj.name} doesn\'t report to anybody.`)} else {
+      console.log(`${obj.jobTitle} ${obj.name} reports to ${obj.boss}.`)
+    }
+  })
