@@ -245,42 +245,76 @@ function decode(word) {
 //factory functions with LOTR
 function createCharacter(name, nickname, race, origin, attack, defense, weapon) {
     return {
-      name,
-      nickname,
-      race,
-      origin,
-      attack,
-      defense,
-      describe: function(){
-        console.log(`${this.name} is a ${this.race} from ${this.origin}.`)},
-      evaluateFight: function(character){
-        if (character.defense > this.attack){return `Your oppenent takes 0 damage and you receive ${(character.attack)-(this.defense)} damage.`} 
-        else if (this.defense > character.attack) { return
-          `Your oppenent takes ${(this.attack)-(character.defense)} damage and you receive 0 damage.`} 
-        else {
-          `Your oppenent takes ${(this.attack)-(character.defense)} damage and you receive ${(character.attack)-(this.defense)} damage.`
-          }
+        name,
+        nickname,
+        race,
+        origin,
+        attack,
+        defense,
+        describe: function () {
+            console.log(`${this.name} is a ${this.race} from ${this.origin}.`)
+        },
+        evaluateFight: function (character) {
+            if (character.defense > this.attack) { return `Your oppenent takes 0 damage and you receive ${(character.attack) - (this.defense)} damage.` }
+            else if (this.defense > character.attack) {
+                return
+                `Your oppenent takes ${(this.attack) - (character.defense)} damage and you receive 0 damage.`
+            }
+            else {
+                `Your oppenent takes ${(this.attack) - (character.defense)} damage and you receive ${(character.attack) - (this.defense)} damage.`
+            }
         },
         weapon
-      }
-  }
-  
-  let characters = [
+    }
+}
+
+let characters = [
     createCharacter('Gandalf the White', 'gandalf', 'Wizard', 'Middle Earth', 10, 6, 'wizard staff'),
     createCharacter('Bilbo Baggins', 'bilbo', 'Hobbit', 'The Shire', 2, 1, 'the Ring'),
     createCharacter('Frodo Baggins', 'frodo', 'Hobbit', 'The Shire', 3, 2, 'String and Barrow Blade'),
     createCharacter('Aragorn son of Arathorn', 'aragorn', 'Man', 'Dunnedain', 6, 8, 'Anduril'),
     createCharacter('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5, 'Bow and Arrow')
-    ]
-  
-    characters.push(createCharacter('Arwen', 'arwen', 'Half-Elf', 'Rivendell', 9, 7, 'Hadhafang'));
-  
-    characters.find(person => person.nickname === 'aragorn').describe();
-  
-    characters.filter(creature => creature.race === 'Hobbit');
-  
-    characters.filter(creature => creature.attack > 5);
-  
-    characters.map(obj => obj.describe = function(){console.log(`${obj.name} is a ${obj.race} from ${obj.origin} who uses a ${obj.weapon}.`)})
-    
-    console.log(characters[0].describe());
+]
+
+characters.push(createCharacter('Arwen', 'arwen', 'Half-Elf', 'Rivendell', 9, 7, 'Hadhafang'));
+
+characters.find(person => person.nickname === 'aragorn').describe();
+
+characters.filter(creature => creature.race === 'Hobbit');
+
+characters.filter(creature => creature.attack > 5);
+
+characters.map(obj => obj.describe = function () { console.log(`${obj.name} is a ${obj.race} from ${obj.origin} who uses a ${obj.weapon}.`) })
+
+console.log(characters[0].describe());
+
+//BONUS: a database search
+const HEROES = [
+    { id: 1, name: 'Captain America', squad: 'Avengers' },
+    { id: 2, name: 'Iron Man', squad: 'Avengers' },
+    { id: 3, name: 'Spiderman', squad: 'Avengers' },
+    { id: 4, name: 'Superman', squad: 'Justice League' },
+    { id: 5, name: 'Wonder Woman', squad: 'Justice League' },
+    { id: 6, name: 'Aquaman', squad: 'Justice League' },
+    { id: 7, name: 'Hulk', squad: 'Avengers' },
+];
+
+function findOne(arr, query) {
+    let possibleSolution = null;
+    for (let i = 0; i < arr.length; i++) {
+        let obj = arr[i];
+        for (let item in query) {
+            if (obj[item] === query[item]) {
+                possibleSolution = obj;
+            }
+            else {
+                possibleSolution = null;
+                break;
+            }
+        }
+        if (possibleSolution !== null) {
+            return obj;
+        }
+    }
+    return null;
+}
